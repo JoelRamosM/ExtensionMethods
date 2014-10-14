@@ -18,45 +18,47 @@ namespace HowToUse
 
             var cpfCnpjNotValid = "086+733/478*88";
 
-            Console.WriteLine("========== Validation Example ===========");
-            ShowValidationCpfCnpj(cpfCnpjValid);
-            ShowValidationCpfCnpj(cpfCnpjNotValid);
+            Console.WriteLine("========== Usando Validações do Extension Method na Classe String ===========");
+
+            Console.WriteLine("\n\n======= Validação de CPF/CNPJ =========");
+            MostrarValidacaoCPFCNPJ(cpfCnpjValid);
+            MostrarValidacaoCPFCNPJ(cpfCnpjNotValid);
             Console.WriteLine("=========================================");
 
-            Console.WriteLine("\n\n==========    Mask Example    ===========\n\n");
+            Console.WriteLine("\n\n======= Validação de Email =========");
+            var email = "joel@gmail.com";
+            MostrarEmailVal(email);
+            MostrarEmailVal("joel#gmail.com");
+            Console.WriteLine("=========================================");
+
+            Console.WriteLine("\n\n========== Usando Mascaras do Extension Method na Classe String ===========\n\n");
             ShowRemoveMask(cpfCnpjValid);
-          
+
             var cpf = "00000000000";
-            Console.WriteLine("\nPut mask on this:{0}", cpf);
-            Console.WriteLine("\nWith Mask: {0}", cpf.CpfMask());
+            Console.WriteLine("\nCPF Sem Mascara: {0}", cpf);
+            Console.WriteLine("\nCPF Com Mascara: {0}", cpf.CpfMask());
 
             var cnpj = "00000000000000";
-            Console.WriteLine("\nPut mask on this:{0}", cnpj);
-            Console.WriteLine("\nWith Mask: {0}", cnpj.CnpjMask());
-            Console.WriteLine("=========================================");
-
-            Console.WriteLine("\n\n");
-            Console.WriteLine("======= Email Validation =========");
-            var email = "joel@gmail.com";
-            ShowEmailVal(email);
-            ShowEmailVal("joel#gmail.com");
+            Console.WriteLine("\nCNPJ Sem Mascara: {0}", cnpj);
+            Console.WriteLine("\nCNPJ Com Mascara: {0}", cnpj.CnpjMask());
+            Console.WriteLine("\n===========================================================================");
 
             Console.ReadKey();
         }
 
-        private static void ShowEmailVal(string email)
+        private static void MostrarEmailVal(string email)
         {
-            Console.WriteLine(email.EmailIsValid() ? "Email is valid: {0}" : "Email isn't valid: {0}", email);
+            Console.WriteLine(email.EmailIsValid() ? "Email Valido: {0}" : "Email Invalido: {0}", email);
         }
 
-        public static void ShowValidationCpfCnpj(string cpfCnpj)
+        public static void MostrarValidacaoCPFCNPJ(string cpfCnpj)
         {
-            Console.WriteLine(cpfCnpj.CpfCnpjIsValid() ? "Is valid: {0}" : "Isn't valid: {0}", cpfCnpj);
+            Console.WriteLine(cpfCnpj.CpfCnpjIsValid() ? "CPF/CNPJ Valido: {0}" : "CPF/CNPJ Invalido: {0}", cpfCnpj);
         }
 
         public static void ShowRemoveMask(string cpfCnpj)
         {
-            Console.WriteLine("Without Mask: {0}", cpfCnpj.CpfCnpjRemoveMask());
+            Console.WriteLine("Sem Mascara: {0}", cpfCnpj.CpfCnpjRemoveMask());
         }
     }
 }
