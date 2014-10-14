@@ -35,9 +35,18 @@ namespace HowToUse
             Console.WriteLine("\nWith Mask: {0}", cnpj.CnpjMask());
             Console.WriteLine("=========================================");
 
-
+            Console.WriteLine("\n\n");
+            Console.WriteLine("======= Email Validation =========");
+            var email = "joel@gmail.com";
+            ShowEmailVal(email);
+            ShowEmailVal("joel#gmail.com");
 
             Console.ReadKey();
+        }
+
+        private static void ShowEmailVal(string email)
+        {
+            Console.WriteLine(email.EmailIsValid() ? "Email is valid: {0}" : "Email isn't valid: {0}", email);
         }
 
         public static void ShowValidationCpfCnpj(string cpfCnpj)
